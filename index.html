@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Waleed | Portfolio</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #161b26;
+            --accent-color: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --card-bg: #1e2533;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Sections General */
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image .img-placeholder {
+            width: 320px;
+            height: 400px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+        }
+
+        /* Education Section */
+        .education-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .timeline {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .project-img-sim {
+            height: 180px;
+            background: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: var(--text-main);
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category li::before {
+            content: "▹";
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: background 0.3s, transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-item:hover {
+            background: var(--accent-color);
+            transform: scale(1.03);
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                padding-top: 8rem;
+            }
+            .hero-content p {
+                margin: 0 auto 2rem auto;
+            }
+            nav ul {
+                display: none; /* Can be expanded into a mobile menu burger if needed */
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Ahmed<span>.W</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="hero">
+        <div class="hero-content">
+            <h2>Hi! I'm</h2>
+            <h1>Ahmed Waleed</h1>
+            <h2>Frontend Developer &amp; Embedded Systems Engineer</h2>
+            <p>Passionate about building beautiful user interfaces and integrating smart hardware solutions seamlessly.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+        <div class="hero-image">
+            <div class="img-placeholder">
+                <!-- Replace 'your-profile-image.jpg' with your actual image path -->
+                <img src="../Downloads/Gemini_Generated_Image_22tby522tby522tb (1).png" alt="Ahmed Waleed">
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Background of Education</h2>
+        <div class="education-card">
+            <h3>Student at Faculty of Computer Science</h3>
+            <span class="timeline">2024 - 2028</span>
+            <p>Currently pursuing my degree with a focus on software development, frontend technologies, and embedded systems.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-img-sim"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="project-info">
+                    <h3>Web Educational Platform</h3>
+                    <p>A responsive web platform designed to provide online courses with an interactive user experience. Allows users to browse courses, view details, and track progress. Built using HTML, CSS, and JavaScript.</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-img-sim"><i class="fa-solid fa-microchip"></i></div>
+                <div class="project-info">
+                    <h3>Smart Lock by Microcontroller</h3>
+                    <p>A smart locking system developed using a microcontroller to enhance security. Allows controlled access through programmed authentication, showcasing hardware and embedded software integration.</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-img-sim"><i class="fa-solid fa-arrow-up-1-9"></i></div>
+                <div class="project-info">
+                    <h3>UP Counter</h3>
+                    <p>A digital up counter implemented using basic electronic components without a microcontroller. Counts and displays incremental values using logic circuits, proving core digital electronics concepts.</p>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-img-sim"><i class="fa-solid fa-rss"></i></div>
+                <div class="project-info">
+                    <h3>Motion Sensor System</h3>
+                    <p>An embedded system that detects motion using ultrasonic/hardware sensors and triggers actions. Designed for security applications utilizing real-time interaction logic.</p>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-img-sim"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <div class="project-info">
+                    <h3>Programming Instructor (C++)</h3>
+                    <p>Taught students fundamentals and advanced concepts of C++ programming. Guided learners through data structures, OOP concepts, algorithms, and mentoring them through practical coding exercises.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Skills Overview</h2>
+        <div class="skills-container">
+            
+            <div class="skill-category">
+                <h3>Frontend</h3>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Embedded Systems</h3>
+                <ul>
+                    <li>Arduino / ESP32</li>
+                    <li>Sensors &amp; Actuators</li>
+                    <li>Embedded C</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>C++</li>
+                    <li>Embedded C</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools</h3>
+                <ul>
+                    <li>Git &amp; GitHub</li>
+                    <li>VS Code</li>
+                    <li>Arduino IDE</li>
+                    <li>Proteus &amp; MikroC</li>
+                    <li>Code Blocks</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Communication</li>
+                    <li>Teamwork &amp; Leadership</li>
+                    <li>Problem Solving</li>
+                    <li>Presentation Skills</li>
+                    <li>Time Management</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <p>Let's collaborate on your next frontend web development or hardware embedded system project!</p>
+            
+            <div class="contact-links">
+                <a href="mailto:ahmedwaleedoffical012@gmail.com" class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>ahmedwaleedoffical012@gmail.com</span>
+                </a>
+                <a href="tel:+201277622062" class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+20 1277622062</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ahmed-waleed-57a860355/" target="_blank" class="contact-item">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span>LinkedIn Profile</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ahmed Waleed. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
